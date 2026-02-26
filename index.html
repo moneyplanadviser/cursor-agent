@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ベイクサイト | パン屋さん専門ホームページ制作</title>
+<meta name="description" content="パン屋さん専門のホームページ制作会社ベイクサイト。地域のパン屋さんに寄り添い、安心と信頼のWeb制作・写真撮影サービスを提供します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --color-primary: #8B6914;
+  --color-primary-light: #C4A35A;
+  --color-primary-dark: #5C4610;
+  --color-accent: #D4A94B;
+  --color-bg: #FFFAF3;
+  --color-bg-warm: #FFF5E6;
+  --color-bg-section: #F7F0E3;
+  --color-text: #3A3226;
+  --color-text-light: #6B5E4F;
+  --color-white: #FFFFFF;
+  --color-border: #E0D5C4;
+  --font-ja: 'Noto Sans JP', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  --font-en: 'Montserrat', sans-serif;
+  --header-height: 80px;
+  --section-padding: 120px;
+  --max-width: 1200px;
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-ja);
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+a:hover { opacity: 0.75; }
+ul, ol { list-style: none; }
+
+.inner { max-width: var(--max-width); margin: 0 auto; padding: 0 40px; }
+
+/* ========================================
+   HEADER
+======================================== */
+.header {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+  background: rgba(255,250,243,0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--color-border);
+  height: var(--header-height);
+  transition: box-shadow 0.3s;
+}
+.header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
+.header__inr {
+  max-width: 1400px; margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 100%;
+}
+.header__logo a {
+  display: flex; align-items: center; gap: 12px;
+  font-weight: 700; font-size: 1.4rem; color: var(--color-primary);
+}
+.header__logo .logo-icon {
+  width: 44px; height: 44px; background: var(--color-primary);
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  color: #fff; font-family: var(--font-en); font-size: 1.1rem; font-weight: 700;
+}
+.header__logo .logo-sub {
+  font-size: 0.65rem; font-weight: 400; color: var(--color-text-light);
+  display: block; margin-top: 2px; letter-spacing: 0.05em;
+}
+.header__nav { display: flex; align-items: center; gap: 32px; }
+.header__nav a {
+  font-size: 0.85rem; font-weight: 500; color: var(--color-text);
+  position: relative; padding: 4px 0;
+}
+.header__nav a::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--color-primary);
+  transition: width 0.3s;
+}
+.header__nav a:hover { opacity: 1; }
+.header__nav a:hover::after { width: 100%; }
+.header__cta {
+  background: var(--color-primary); color: #fff;
+  padding: 10px 28px; border-radius: 50px;
+  font-size: 0.85rem; font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+.header__cta:hover { background: var(--color-primary-dark); opacity: 1; transform: translateY(-1px); }
+
+/* Hamburger */
+.hamburger {
+  display: none; flex-direction: column; gap: 6px; cursor: pointer;
+  background: none; border: none; padding: 8px; z-index: 1100;
+}
+.hamburger span {
+  display: block; width: 28px; height: 2px;
+  background: var(--color-text); transition: 0.3s;
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(6px, 6px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(6px, -6px); }
+
+/* Mobile Nav */
+.mobile-nav {
+  display: none; position: fixed; top: 0; left: 0;
+  width: 100%; height: 100vh;
+  background: rgba(255,250,243,0.98);
+  backdrop-filter: blur(20px);
+  z-index: 1050;
+  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+}
+.mobile-nav.active { display: flex; }
+.mobile-nav a { font-size: 1.1rem; font-weight: 500; }
+
+/* ========================================
+   HERO
+======================================== */
+.hero {
+  position: relative; width: 100%;
+  height: 100vh; min-height: 600px; max-height: 960px;
+  margin-top: var(--header-height);
+  overflow: hidden;
+}
+.hero__slider {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+}
+.hero__slide {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  opacity: 0; transition: opacity 2s ease-in-out;
+}
+.hero__slide.active { opacity: 1; }
+.hero__slide img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(58,50,38,0.65) 0%,
+    rgba(58,50,38,0.3) 50%,
+    rgba(58,50,38,0.1) 100%
+  );
+  z-index: 2;
+}
+.hero__content {
+  position: absolute; inset: 0; z-index: 3;
+  display: flex; flex-direction: column; justify-content: center;
+  padding-left: 8%;
+}
+.hero__catch {
+  color: #fff; font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-weight: 900; line-height: 1.5;
+  letter-spacing: 0.06em;
+  text-shadow: 0 2px 30px rgba(0,0,0,0.2);
+}
+.hero__catch em {
+  display: block; font-style: normal;
+  transform: translateY(30px); opacity: 0;
+  animation: fadeUp 1s forwards;
+}
+.hero__catch em:nth-child(2) { animation-delay: 0.3s; }
+.hero__catch em:nth-child(3) { animation-delay: 0.6s; }
+.hero__sub {
+  color: rgba(255,255,255,0.9); font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+  margin-top: 24px; font-weight: 400; letter-spacing: 0.08em;
+  transform: translateY(20px); opacity: 0;
+  animation: fadeUp 1s 0.9s forwards;
+}
+.hero__badge {
+  position: absolute; bottom: 40px; right: 40px; z-index: 3;
+  background: var(--color-primary); color: #fff;
+  width: 140px; height: 140px; border-radius: 50%;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 0.75rem; text-align: center; line-height: 1.4;
+  box-shadow: 0 8px 30px rgba(139,105,20,0.4);
+  animation: badgePulse 3s infinite;
+}
+.hero__badge strong { font-size: 1.1rem; display: block; }
+
+@keyframes fadeUp {
+  to { transform: translateY(0); opacity: 1; }
+}
+@keyframes badgePulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+/* ========================================
+   SECTION COMMON
+======================================== */
+.sec {
+  padding: var(--section-padding) 0;
+}
+.sec-ttl {
+  text-align: center; margin-bottom: 60px;
+}
+.sec-ttl em {
+  display: block; font-family: var(--font-en);
+  font-style: normal; font-size: 0.8rem; font-weight: 500;
+  color: var(--color-primary); letter-spacing: 0.2em;
+  text-transform: uppercase; margin-bottom: 12px;
+}
+.sec-ttl span {
+  display: block; font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+  font-weight: 700; line-height: 1.4;
+}
+.sec-ttl .sec-desc {
+  display: block; font-size: 0.95rem; font-weight: 400;
+  color: var(--color-text-light); margin-top: 16px;
+  line-height: 1.8;
+}
+.sec-line {
+  display: block; width: 40px; height: 3px;
+  background: var(--color-primary); margin: 20px auto 0;
+  border-radius: 2px;
+}
+
+/* ========================================
+   MESSAGE SECTION
+======================================== */
+.sec-message { background: var(--color-white); }
+.message-content {
+  max-width: 800px; margin: 0 auto; text-align: center;
+}
+.message-content .lead {
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  font-weight: 700; line-height: 2;
+  color: var(--color-primary-dark);
+  margin-bottom: 32px;
+}
+.message-content p {
+  font-size: 1rem; line-height: 2.2;
+  color: var(--color-text-light);
+}
+
+/* ========================================
+   SERVICE SECTION
+======================================== */
+.sec-service { background: var(--color-bg-section); }
+.service-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+.service-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+}
+.service-card__img {
+  width: 100%; height: 240px; overflow: hidden;
+}
+.service-card__img img {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.6s;
+}
+.service-card:hover .service-card__img img { transform: scale(1.05); }
+.service-card__body { padding: 32px; }
+.service-card__num {
+  font-family: var(--font-en); font-size: 0.75rem; font-weight: 600;
+  color: var(--color-primary); letter-spacing: 0.15em;
+  margin-bottom: 8px;
+}
+.service-card__title {
+  font-size: 1.25rem; font-weight: 700; margin-bottom: 16px;
+  line-height: 1.4;
+}
+.service-card__text {
+  font-size: 0.9rem; color: var(--color-text-light);
+  line-height: 1.9;
+}
+
+/* ========================================
+   REASON SECTION (Banner style like sazae)
+======================================== */
+.sec-reason { background: var(--color-bg); }
+.reason-list { display: flex; flex-direction: column; gap: 32px; }
+.reason-item {
+  display: grid; grid-template-columns: 1fr 1fr;
+  background: var(--color-white); border-radius: 16px;
+  overflow: hidden; min-height: 340px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+.reason-item:nth-child(even) { direction: rtl; }
+.reason-item:nth-child(even) > * { direction: ltr; }
+.reason-item__img {
+  width: 100%; height: 100%; min-height: 340px;
+  overflow: hidden;
+}
+.reason-item__img img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.reason-item__body {
+  padding: 48px; display: flex; flex-direction: column;
+  justify-content: center;
+}
+.reason-item__num {
+  font-family: var(--font-en); font-size: 3rem; font-weight: 700;
+  color: var(--color-primary-light); opacity: 0.4;
+  line-height: 1; margin-bottom: 12px;
+}
+.reason-item__title {
+  font-size: 1.3rem; font-weight: 700; margin-bottom: 16px;
+  line-height: 1.5;
+}
+.reason-item__text {
+  font-size: 0.9rem; color: var(--color-text-light);
+  line-height: 2;
+}
+
+/* ========================================
+   WORKS SECTION
+======================================== */
+.sec-works { background: var(--color-bg-section); }
+.works-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.work-card {
+  background: var(--color-white); border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  transition: transform 0.4s;
+}
+.work-card:hover { transform: translateY(-4px); }
+.work-card__img { width: 100%; height: 220px; overflow: hidden; }
+.work-card__img img { width: 100%; height: 100%; object-fit: cover; }
+.work-card__body { padding: 24px; }
+.work-card__tag {
+  display: inline-block; font-size: 0.7rem; font-weight: 600;
+  color: var(--color-primary); background: var(--color-bg-warm);
+  padding: 4px 12px; border-radius: 20px; margin-bottom: 10px;
+}
+.work-card__title {
+  font-size: 1rem; font-weight: 600; margin-bottom: 8px;
+}
+.work-card__text {
+  font-size: 0.82rem; color: var(--color-text-light); line-height: 1.7;
+}
+
+/* ========================================
+   FLOW SECTION
+======================================== */
+.sec-flow { background: var(--color-white); }
+.flow-steps {
+  display: flex; gap: 20px; position: relative;
+  max-width: 1000px; margin: 0 auto;
+}
+.flow-step {
+  flex: 1; text-align: center; position: relative;
+  padding: 40px 20px;
+}
+.flow-step__num {
+  width: 64px; height: 64px; border-radius: 50%;
+  background: var(--color-primary); color: #fff;
+  font-family: var(--font-en); font-size: 1.3rem; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px;
+}
+.flow-step__title {
+  font-size: 1rem; font-weight: 700; margin-bottom: 12px;
+}
+.flow-step__text {
+  font-size: 0.82rem; color: var(--color-text-light); line-height: 1.8;
+}
+.flow-step__arrow {
+  position: absolute; right: -22px; top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-border); font-size: 1.5rem;
+}
+
+/* ========================================
+   PHOTO BANNER (full-width like sazae)
+======================================== */
+.sec-photo {
+  position: relative; height: 500px; overflow: hidden;
+}
+.sec-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.sec-photo__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(58,50,38,0.6), rgba(58,50,38,0.2));
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  color: #fff; text-align: center; padding: 40px;
+}
+.sec-photo__overlay h2 {
+  font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 700;
+  line-height: 1.6; margin-bottom: 16px;
+}
+.sec-photo__overlay p {
+  font-size: 1rem; opacity: 0.9; line-height: 2; max-width: 600px;
+}
+
+/* ========================================
+   ABOUT SECTION
+======================================== */
+.sec-about { background: var(--color-bg); }
+.about-content {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 60px; align-items: center;
+}
+.about-img { border-radius: 16px; overflow: hidden; }
+.about-img img { width: 100%; height: 400px; object-fit: cover; }
+.about-body h3 {
+  font-size: 1.4rem; font-weight: 700; margin-bottom: 20px;
+  line-height: 1.6;
+}
+.about-body p {
+  font-size: 0.95rem; color: var(--color-text-light);
+  line-height: 2; margin-bottom: 16px;
+}
+.about-info {
+  margin-top: 32px; border-top: 1px solid var(--color-border);
+  padding-top: 24px;
+}
+.about-info dl {
+  display: grid; grid-template-columns: 100px 1fr;
+  gap: 12px 20px; font-size: 0.9rem;
+}
+.about-info dt { font-weight: 600; color: var(--color-primary-dark); }
+.about-info dd { color: var(--color-text-light); }
+
+/* ========================================
+   CONTACT SECTION
+======================================== */
+.sec-contact {
+  background: var(--color-primary);
+  color: #fff; text-align: center;
+  padding: 100px 0;
+}
+.sec-contact .sec-ttl em { color: rgba(255,255,255,0.6); }
+.sec-contact .sec-ttl span { color: #fff; }
+.sec-contact .sec-line { background: rgba(255,255,255,0.4); }
+.contact-lead {
+  font-size: 1.05rem; opacity: 0.9;
+  line-height: 2; margin-bottom: 40px;
+}
+.contact-btn {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: #fff; color: var(--color-primary);
+  padding: 18px 48px; border-radius: 50px;
+  font-size: 1.05rem; font-weight: 700;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.contact-btn:hover {
+  opacity: 1; transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+.contact-btn svg { width: 20px; height: 20px; }
+.contact-tel {
+  margin-top: 32px; font-size: 0.9rem; opacity: 0.8;
+}
+.contact-tel a { color: #fff; font-size: 1.3rem; font-weight: 700; letter-spacing: 0.05em; }
+
+/* ========================================
+   FOOTER
+======================================== */
+.footer {
+  background: var(--color-text); color: rgba(255,255,255,0.7);
+  padding: 60px 0 32px;
+}
+.footer__inr {
+  max-width: var(--max-width); margin: 0 auto; padding: 0 40px;
+}
+.footer__top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+.footer__logo {
+  font-size: 1.2rem; font-weight: 700; color: #fff;
+  margin-bottom: 12px;
+}
+.footer__logo-sub { font-size: 0.75rem; font-weight: 400; }
+.footer__links { display: flex; gap: 40px; }
+.footer__links ul { display: flex; flex-direction: column; gap: 10px; }
+.footer__links a { font-size: 0.82rem; }
+.footer__links a:hover { color: #fff; }
+.footer__btm {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 32px; font-size: 0.75rem;
+}
+.footer__sns { display: flex; gap: 16px; }
+.footer__sns a {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem; transition: background 0.3s;
+}
+.footer__sns a:hover { background: rgba(255,255,255,0.1); opacity: 1; }
+
+/* ========================================
+   UTILITIES
+======================================== */
+.btn-arrow {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.9rem; font-weight: 600; color: var(--color-primary);
+  border-bottom: 1px solid var(--color-primary);
+  padding-bottom: 4px; transition: gap 0.3s;
+}
+.btn-arrow:hover { gap: 14px; opacity: 1; }
+
+/* Fade-in on scroll */
+.io { opacity: 0; transform: translateY(40px); transition: opacity 0.8s, transform 0.8s; }
+.io.visible { opacity: 1; transform: translateY(0); }
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+@media (max-width: 1024px) {
+  .service-grid { grid-template-columns: repeat(2, 1fr); }
+  .works-grid { grid-template-columns: repeat(2, 1fr); }
+  .flow-steps { flex-wrap: wrap; }
+  .flow-step { flex: 0 0 calc(50% - 10px); }
+  .flow-step__arrow { display: none; }
+}
+
+@media (max-width: 768px) {
+  :root { --section-padding: 80px; --header-height: 64px; }
+
+  .header__nav { display: none; }
+  .header__cta.desktop { display: none; }
+  .hamburger { display: flex; }
+
+  .hero { height: 80vh; min-height: 500px; }
+  .hero__content { padding-left: 24px; padding-right: 24px; }
+  .hero__badge { width: 110px; height: 110px; bottom: 24px; right: 24px; font-size: 0.65rem; }
+  .hero__badge strong { font-size: 0.95rem; }
+
+  .inner { padding: 0 20px; }
+
+  .service-grid { grid-template-columns: 1fr; gap: 24px; }
+  .service-card__img { height: 200px; }
+
+  .reason-item { grid-template-columns: 1fr; }
+  .reason-item:nth-child(even) { direction: ltr; }
+  .reason-item__img { min-height: 220px; }
+  .reason-item__body { padding: 32px; }
+
+  .works-grid { grid-template-columns: 1fr; }
+
+  .flow-steps { flex-direction: column; gap: 0; }
+  .flow-step { flex: none; padding: 24px 20px; }
+  .flow-step__arrow { display: none; }
+
+  .about-content { grid-template-columns: 1fr; gap: 32px; }
+  .about-img img { height: 260px; }
+
+  .sec-photo { height: 360px; }
+
+  .footer__top { flex-direction: column; gap: 32px; }
+  .footer__links { gap: 24px; }
+  .footer__btm { flex-direction: column; gap: 16px; text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .hero__catch { font-size: 1.7rem; }
+  .hero__badge { width: 96px; height: 96px; font-size: 0.58rem; }
+  .hero__badge strong { font-size: 0.85rem; }
+  .about-info dl { grid-template-columns: 80px 1fr; font-size: 0.82rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ======== HEADER ======== -->
+<header class="header" id="header">
+  <div class="header__inr">
+    <h1 class="header__logo">
+      <a href="#">
+        <span class="logo-icon">B</span>
+        <span>
+          ベイクサイト
+          <span class="logo-sub">パン屋さん専門HP制作</span>
+        </span>
+      </a>
+    </h1>
+    <nav class="header__nav">
+      <a href="#service">サービス</a>
+      <a href="#reason">選ばれる理由</a>
+      <a href="#works">制作実績</a>
+      <a href="#flow">ご依頼の流れ</a>
+      <a href="#about">会社概要</a>
+    </nav>
+    <a class="header__cta desktop" href="#contact">無料相談はこちら</a>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="#service" class="mobile-nav-link">サービス</a>
+  <a href="#reason" class="mobile-nav-link">選ばれる理由</a>
+  <a href="#works" class="mobile-nav-link">制作実績</a>
+  <a href="#flow" class="mobile-nav-link">ご依頼の流れ</a>
+  <a href="#about" class="mobile-nav-link">会社概要</a>
+  <a class="header__cta" href="#contact" class="mobile-nav-link">無料相談はこちら</a>
+</div>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="top">
+  <div class="hero__slider">
+    <div class="hero__slide active">
+      <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920&q=80" alt="焼きたてのパン">
+    </div>
+    <div class="hero__slide">
+      <img src="https://images.unsplash.com/photo-1549931319-a545753d62ce?w=1920&q=80" alt="パン屋の店内">
+    </div>
+    <div class="hero__slide">
+      <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=1920&q=80" alt="こだわりのパン">
+    </div>
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <h2 class="hero__catch">
+      <em>あなたのパン屋さんの</em>
+      <em>想いを、届ける。</em>
+    </h2>
+    <p class="hero__sub">パン屋さんのためだけに生まれた、ホームページ制作サービス</p>
+  </div>
+  <div class="hero__badge">
+    <strong>相談無料</strong>
+    お気軽に<br>ご連絡ください
+  </div>
+</section>
+
+<!-- ======== MESSAGE ======== -->
+<section class="sec sec-message">
+  <div class="inner io">
+    <div class="message-content">
+      <p class="lead">
+        地域で愛されるパン屋さんに、<br>
+        もっとたくさんのお客さまとの<br>
+        出会いを届けたい。
+      </p>
+      <p>
+        ベイクサイトは、パン屋さん専門のホームページ制作会社です。<br>
+        私たちはパン屋さんの魅力を誰よりも理解し、<br>
+        その想いをホームページを通じて発信するお手伝いをしています。<br>
+        お店に直接お伺いし、店主さまと対話しながら、<br>
+        安心と信頼を大切にしたHP制作をお約束します。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SERVICE ======== -->
+<section class="sec sec-service" id="service">
+  <div class="inner">
+    <div class="sec-ttl io">
+      <em>SERVICE</em>
+      <span>サービス内容</span>
+      <i class="sec-line"></i>
+    </div>
+    <div class="service-grid">
+      <div class="service-card io">
+        <div class="service-card__img">
+          <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="ホームページ制作">
+        </div>
+        <div class="service-card__body">
+          <p class="service-card__num">SERVICE 01</p>
+          <h3 class="service-card__title">ホームページ制作</h3>
+          <p class="service-card__text">
+            パン屋さん専門だからこそできる、お店の魅力を最大限に引き出すデザイン。
+            メニュー紹介、店舗情報、こだわりの紹介など、パン屋さんに必要な要素をすべて網羅します。
+          </p>
+        </div>
+      </div>
+      <div class="service-card io">
+        <div class="service-card__img">
+          <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80" alt="写真撮影">
+        </div>
+        <div class="service-card__body">
+          <p class="service-card__num">SERVICE 02</p>
+          <h3 class="service-card__title">プロの写真撮影</h3>
+          <p class="service-card__text">
+            パンの美味しさが伝わるプロの撮影をセットでご提供。
+            焼きたての湯気、こんがりとした焼き色、小麦の質感まで美しくお撮りします。
+          </p>
+        </div>
+      </div>
+      <div class="service-card io">
+        <div class="service-card__img">
+          <img src="https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?w=800&q=80" alt="運用サポート">
+        </div>
+        <div class="service-card__body">
+          <p class="service-card__num">SERVICE 03</p>
+          <h3 class="service-card__title">公開後の運用サポート</h3>
+          <p class="service-card__text">
+            ホームページは作って終わりではありません。
+            更新作業の代行、季節メニューの差し替え、アクセス解析レポートなど、継続的にサポートします。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== REASON ======== -->
+<section class="sec sec-reason" id="reason">
+  <div class="inner">
+    <div class="sec-ttl io">
+      <em>WHY US</em>
+      <span>選ばれる理由</span>
+      <i class="sec-line"></i>
+    </div>
+    <div class="reason-list">
+      <div class="reason-item io">
+        <div class="reason-item__img">
+          <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=800&q=80" alt="パン屋専門">
+        </div>
+        <div class="reason-item__body">
+          <p class="reason-item__num">01</p>
+          <h3 class="reason-item__title">パン屋さんだけに特化した<br>専門チーム</h3>
+          <p class="reason-item__text">
+            私たちはパン屋さんのHP制作だけを手がける専門集団です。
+            数多くのパン屋さんのサイトを制作してきた経験から、
+            「お客さまが本当に知りたい情報」を熟知しています。
+            パン業界への深い理解が、成果につながるサイト制作を可能にします。
+          </p>
+        </div>
+      </div>
+      <div class="reason-item io">
+        <div class="reason-item__img">
+          <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="直接お伺い">
+        </div>
+        <div class="reason-item__body">
+          <p class="reason-item__num">02</p>
+          <h3 class="reason-item__title">お店に直接お伺いして<br>丁寧にヒアリング</h3>
+          <p class="reason-item__text">
+            メールや電話だけでは伝わらない、お店の雰囲気やこだわりがあります。
+            私たちは必ずお店に足を運び、店主さまとじっくりお話しすることを大切にしています。
+            パンの香り、お客さまの笑顔、お店の温かさを肌で感じてから制作に入ります。
+          </p>
+        </div>
+      </div>
+      <div class="reason-item io">
+        <div class="reason-item__img">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80" alt="写真撮影込み">
+        </div>
+        <div class="reason-item__body">
+          <p class="reason-item__num">03</p>
+          <h3 class="reason-item__title">宣材写真の撮影も<br>おまかせください</h3>
+          <p class="reason-item__text">
+            美味しいパンの写真は、ホームページの命です。
+            パンの撮影に慣れたカメラマンがお店にお伺いし、
+            メニュー写真や店舗写真をプロのクオリティでお撮りします。
+            別途カメラマンを手配する手間もコストも不要です。
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PHOTO BANNER ======== -->
+<section class="sec-photo">
+  <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=1920&q=80" alt="パン作りの風景">
+  <div class="sec-photo__overlay">
+    <h2>
+      焼きたてのパンの香りが<br>
+      画面の向こうに届くように。
+    </h2>
+    <p>
+      お客さまがスマホでお店を見つけたとき、<br>
+      思わず「行ってみたい」と感じるホームページを。
+    </p>
+  </div>
+</section>
+
+<!-- ======== WORKS ======== -->
+<section class="sec sec-works" id="works">
+  <div class="inner">
+    <div class="sec-ttl io">
+      <em>WORKS</em>
+      <span>制作実績</span>
+      <i class="sec-line"></i>
+    </div>
+    <div class="works-grid">
+      <div class="work-card io">
+        <div class="work-card__img">
+          <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=800&q=80" alt="ベーカリー花">
+        </div>
+        <div class="work-card__body">
+          <span class="work-card__tag">街のパン屋さん</span>
+          <h3 class="work-card__title">ベーカリー花 さま</h3>
+          <p class="work-card__text">地域密着の温かさを表現した、ナチュラルテイストのデザイン。月間アクセス数が3倍に。</p>
+        </div>
+      </div>
+      <div class="work-card io">
+        <div class="work-card__img">
+          <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=800&q=80" alt="パン工房 麦の穂">
+        </div>
+        <div class="work-card__body">
+          <span class="work-card__tag">こだわりパン屋さん</span>
+          <h3 class="work-card__title">パン工房 麦の穂 さま</h3>
+          <p class="work-card__text">天然酵母へのこだわりを伝えるストーリー型サイト。新規来店客が大幅増加。</p>
+        </div>
+      </div>
+      <div class="work-card io">
+        <div class="work-card__img">
+          <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=800&q=80" alt="ル・プティ・パン">
+        </div>
+        <div class="work-card__body">
+          <span class="work-card__tag">フレンチベーカリー</span>
+          <h3 class="work-card__title">ル・プティ・パン さま</h3>
+          <p class="work-card__text">フランス仕込みの本格パンの世界観を表現。予約機能も搭載し業務効率化を実現。</p>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:48px;" class="io">
+      <a class="btn-arrow" href="#">実績をもっと見る →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FLOW ======== -->
+<section class="sec sec-flow" id="flow">
+  <div class="inner">
+    <div class="sec-ttl io">
+      <em>FLOW</em>
+      <span>ご依頼の流れ</span>
+      <i class="sec-line"></i>
+    </div>
+    <div class="flow-steps io">
+      <div class="flow-step">
+        <div class="flow-step__num">1</div>
+        <h3 class="flow-step__title">お問い合わせ</h3>
+        <p class="flow-step__text">まずはお気軽にご連絡ください。お電話・メール・フォームから承ります。</p>
+        <span class="flow-step__arrow">▶</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step__num">2</div>
+        <h3 class="flow-step__title">ご訪問・ヒアリング</h3>
+        <p class="flow-step__text">お店にお伺いし、ご要望やお店のこだわりを丁寧にお聞きします。</p>
+        <span class="flow-step__arrow">▶</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step__num">3</div>
+        <h3 class="flow-step__title">写真撮影・制作</h3>
+        <p class="flow-step__text">プロカメラマンによる撮影と、デザイン・コーディングを進めます。</p>
+        <span class="flow-step__arrow">▶</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step__num">4</div>
+        <h3 class="flow-step__title">公開・運用開始</h3>
+        <p class="flow-step__text">ご確認後に公開。その後も更新サポートで安心してお任せいただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABOUT ======== -->
+<section class="sec sec-about" id="about">
+  <div class="inner">
+    <div class="sec-ttl io">
+      <em>ABOUT</em>
+      <span>会社概要</span>
+      <i class="sec-line"></i>
+    </div>
+    <div class="about-content io">
+      <div class="about-img">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" alt="チームの様子">
+      </div>
+      <div class="about-body">
+        <h3>パンが好き。だから、<br>パン屋さんのためのHPを。</h3>
+        <p>
+          ベイクサイトは「地域のパン屋さんをもっと元気にしたい」という想いから生まれました。
+          大手のWeb制作会社にはない、パン屋さんへの深い理解と、お店に寄り添ったサービスが私たちの強みです。
+        </p>
+        <div class="about-info">
+          <dl>
+            <dt>会社名</dt><dd>ベイクサイト株式会社</dd>
+            <dt>所在地</dt><dd>東京都世田谷区〇〇 1-2-3</dd>
+            <dt>設立</dt><dd>2024年4月</dd>
+            <dt>代表</dt><dd>山田 太郎</dd>
+            <dt>事業内容</dt><dd>パン屋さん専門HP制作・写真撮影・運用サポート</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CONTACT ======== -->
+<section class="sec-contact" id="contact">
+  <div class="inner">
+    <div class="sec-ttl">
+      <em>CONTACT</em>
+      <span>お問い合わせ</span>
+      <i class="sec-line"></i>
+    </div>
+    <p class="contact-lead">
+      パン屋さんのホームページのことなら、何でもお気軽にご相談ください。<br>
+      初回のご相談は無料です。お見積りだけでも大歓迎です。
+    </p>
+    <a class="contact-btn" href="#">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+      無料相談のお問い合わせ
+    </a>
+    <p class="contact-tel">
+      お電話でもお気軽にどうぞ<br>
+      <a href="tel:0312345678">03-1234-5678</a>
+    </p>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer class="footer">
+  <div class="footer__inr">
+    <div class="footer__top">
+      <div>
+        <p class="footer__logo">
+          ベイクサイト
+          <span class="footer__logo-sub">パン屋さん専門HP制作</span>
+        </p>
+        <p style="font-size:0.82rem; margin-top:8px;">〒154-0000 東京都世田谷区〇〇 1-2-3</p>
+      </div>
+      <div class="footer__links">
+        <ul>
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#reason">選ばれる理由</a></li>
+          <li><a href="#works">制作実績</a></li>
+        </ul>
+        <ul>
+          <li><a href="#flow">ご依頼の流れ</a></li>
+          <li><a href="#about">会社概要</a></li>
+          <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__btm">
+      <div class="footer__sns">
+        <a href="#" aria-label="Instagram">📷</a>
+        <a href="#" aria-label="Twitter">🐦</a>
+        <a href="#" aria-label="LINE">💬</a>
+      </div>
+      <small>&copy; 2024 ベイクサイト株式会社 All Rights Reserved.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Header scroll effect
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hero image slider
+const slides = document.querySelectorAll('.hero__slide');
+let current = 0;
+setInterval(() => {
+  slides[current].classList.remove('active');
+  current = (current + 1) % slides.length;
+  slides[current].classList.add('active');
+}, 5000);
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('active');
+});
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+  });
+});
+
+// Scroll-in animation (IntersectionObserver)
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.io').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
