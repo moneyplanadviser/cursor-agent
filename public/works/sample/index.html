@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パン工房 こむぎ日和 | 大阪・堺市の手づくりパン屋さん</title>
+<meta name="description" content="大阪・堺市の手づくりパン屋さん「パン工房 こむぎ日和」。毎朝焼きたてのパンをお届けします。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --brown: #5C3D2E;
+  --brown-light: #8B6914;
+  --cream: #FDF8F0;
+  --cream-dark: #F5EDE0;
+  --warm: #D4A94B;
+  --text: #3A3226;
+  --text-light: #7A6E60;
+  --white: #fff;
+  --font-ja: 'Noto Sans JP', sans-serif;
+  --font-serif: 'Noto Serif JP', serif;
+  --font-en: 'Montserrat', sans-serif;
+}
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-ja); color: var(--text); background: var(--cream); line-height: 1.8; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; color: inherit; transition: opacity 0.3s; }
+a:hover { opacity: 0.7; }
+ul { list-style: none; }
+
+/* Header */
+.header {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  background: rgba(253,248,240,0.95); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(92,61,46,0.1);
+  height: 72px;
+}
+.header__inner {
+  max-width: 1200px; margin: 0 auto; padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between; height: 100%;
+}
+.header__logo {
+  font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; color: var(--brown);
+  letter-spacing: 0.1em;
+}
+.header__logo small { font-size: 0.6rem; font-weight: 400; display: block; font-family: var(--font-en); letter-spacing: 0.2em; color: var(--text-light); }
+.header__nav { display: flex; gap: 28px; }
+.header__nav a { font-size: 0.82rem; font-weight: 500; color: var(--text-light); letter-spacing: 0.05em; }
+.header__nav a:hover { color: var(--brown); opacity: 1; }
+
+/* Hero */
+.hero {
+  margin-top: 72px; position: relative; height: 90vh; min-height: 560px; max-height: 860px; overflow: hidden;
+}
+.hero__bg {
+  position: absolute; inset: 0;
+  background: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1920&q=80') center/cover;
+}
+.hero__overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to right, rgba(60,40,20,0.7) 0%, rgba(60,40,20,0.2) 60%, transparent 100%);
+}
+.hero__content {
+  position: relative; z-index: 2; height: 100%;
+  display: flex; flex-direction: column; justify-content: center;
+  max-width: 1200px; margin: 0 auto; padding: 0 48px;
+}
+.hero__catch {
+  font-family: var(--font-serif); color: #fff; font-size: clamp(1.8rem, 4vw, 3rem);
+  font-weight: 700; line-height: 1.7; letter-spacing: 0.12em;
+}
+.hero__catch em { display: block; font-style: normal; }
+.hero__sub {
+  color: rgba(255,255,255,0.7); font-family: var(--font-en);
+  font-size: 0.82rem; margin-top: 20px; letter-spacing: 0.2em;
+}
+.hero__sns {
+  position: absolute; bottom: 40px; left: 48px; z-index: 2;
+  display: flex; gap: 16px;
+}
+.hero__sns a { color: rgba(255,255,255,0.6); font-size: 0.85rem; }
+.hero__copy {
+  position: absolute; bottom: 40px; right: 48px; z-index: 2;
+  color: rgba(255,255,255,0.3); font-family: var(--font-en); font-size: 0.65rem;
+  writing-mode: vertical-rl; letter-spacing: 0.15em;
+}
+
+/* Section common */
+.sec { padding: 100px 0; }
+.sec__inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+.sec__en { font-family: var(--font-en); font-size: 0.75rem; letter-spacing: 0.25em; color: var(--text-light); }
+.sec__en::before { content: '— '; }
+.sec__title {
+  font-family: var(--font-serif); font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+  font-weight: 700; margin-top: 12px; line-height: 1.6;
+}
+
+/* Info (News) */
+.info { background: var(--white); }
+.info__list { margin-top: 40px; }
+.info__item {
+  display: flex; gap: 24px; padding: 20px 0;
+  border-bottom: 1px solid var(--cream-dark); align-items: baseline;
+}
+.info__date { font-family: var(--font-en); font-size: 0.8rem; color: var(--text-light); flex-shrink: 0; }
+.info__text { font-size: 0.92rem; }
+.info__text:hover { color: var(--brown-light); }
+.more-link {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 32px;
+  font-size: 0.85rem; color: var(--brown); font-weight: 500;
+  border-bottom: 1px solid var(--brown); padding-bottom: 2px;
+}
+
+/* About */
+.about { background: var(--cream); }
+.about__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+  margin-top: 48px; align-items: center;
+}
+.about__img { border-radius: 8px; overflow: hidden; }
+.about__img img { width: 100%; height: 400px; object-fit: cover; }
+.about__body p { font-size: 0.95rem; color: var(--text-light); line-height: 2.2; margin-top: 20px; }
+
+/* Commitment cards */
+.commitment { background: var(--white); }
+.commitment__grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+  margin-top: 48px;
+}
+.commitment__card {
+  border-radius: 12px; overflow: hidden; position: relative;
+  aspect-ratio: 3/4;
+}
+.commitment__card img { width: 100%; height: 100%; object-fit: cover; }
+.commitment__card figcaption {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(40,28,16,0.8));
+  color: #fff; padding: 24px 16px 16px; font-size: 0.85rem; font-weight: 500;
+}
+
+/* Gallery */
+.gallery { background: var(--cream-dark); overflow: hidden; }
+.gallery__scroll {
+  display: flex; gap: 16px; margin-top: 48px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  padding-bottom: 16px; -webkit-overflow-scrolling: touch;
+}
+.gallery__scroll::-webkit-scrollbar { height: 4px; }
+.gallery__scroll::-webkit-scrollbar-track { background: transparent; }
+.gallery__scroll::-webkit-scrollbar-thumb { background: var(--warm); border-radius: 2px; }
+.gallery__item {
+  flex: 0 0 320px; scroll-snap-align: start;
+  border-radius: 12px; overflow: hidden;
+}
+.gallery__item img { width: 100%; height: 220px; object-fit: cover; }
+
+/* Lineup */
+.lineup { background: var(--cream); }
+.lineup__grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+  margin-top: 48px;
+}
+.lineup__card { text-align: center; }
+.lineup__card img {
+  width: 100%; aspect-ratio: 3/2; object-fit: cover;
+  border-radius: 12px;
+}
+.lineup__card figcaption {
+  font-size: 0.95rem; font-weight: 600; margin-top: 14px;
+}
+
+/* Store */
+.store { background: var(--white); }
+.store__grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+  margin-top: 48px;
+}
+.store__card {
+  background: var(--cream); border-radius: 16px; padding: 40px;
+  text-align: center;
+}
+.store__card img { width: 200px; height: 160px; object-fit: contain; margin: 0 auto 20px; border-radius: 8px; }
+.store__name { font-family: var(--font-serif); font-size: 1.1rem; font-weight: 700; }
+.store__addr { font-size: 0.82rem; color: var(--text-light); margin-top: 8px; line-height: 1.8; }
+.store__btn {
+  display: inline-block; margin-top: 16px; padding: 10px 32px;
+  border: 1px solid var(--brown); border-radius: 50px;
+  font-size: 0.8rem; color: var(--brown); font-weight: 500;
+  transition: background 0.3s, color 0.3s;
+}
+.store__btn:hover { background: var(--brown); color: #fff; opacity: 1; }
+
+/* Footer */
+.footer { background: var(--brown); color: rgba(255,255,255,0.7); padding: 60px 0 32px; }
+.footer__inner { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+.footer__top { display: flex; justify-content: space-between; align-items: flex-start; }
+.footer__logo-area { }
+.footer__logo {
+  font-family: var(--font-serif); font-size: 1.2rem; color: #fff; font-weight: 700;
+}
+.footer__logo small { font-family: var(--font-en); font-size: 0.65rem; font-weight: 400; display: block; margin-top: 4px; opacity: 0.6; }
+.footer__nav { display: flex; gap: 40px; }
+.footer__nav ul { display: flex; flex-direction: column; gap: 10px; }
+.footer__nav a { font-size: 0.78rem; }
+.footer__nav a:hover { color: #fff; opacity: 1; }
+.footer__sns { margin-top: 24px; }
+.footer__sns span { font-size: 0.72rem; display: block; margin-bottom: 8px; }
+.footer__sns a { margin-right: 12px; font-size: 0.82rem; }
+.footer__bottom {
+  margin-top: 48px; padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  font-size: 0.7rem; font-family: var(--font-en); opacity: 0.5; text-align: center;
+}
+
+/* Badge */
+.badge-sample {
+  position: fixed; top: 80px; right: 0; z-index: 200;
+  background: var(--brown); color: #fff; padding: 10px 20px 10px 24px;
+  font-size: 0.75rem; font-weight: 600; border-radius: 8px 0 0 8px;
+  box-shadow: -2px 2px 12px rgba(0,0,0,0.2);
+  letter-spacing: 0.05em;
+}
+.badge-sample a { color: #fff; border-bottom: 1px solid rgba(255,255,255,0.5); }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header__nav { display: none; }
+  .hero { height: 70vh; }
+  .hero__content { padding: 0 24px; }
+  .about__grid { grid-template-columns: 1fr; gap: 32px; }
+  .about__img img { height: 260px; }
+  .commitment__grid { grid-template-columns: repeat(2, 1fr); }
+  .lineup__grid { grid-template-columns: 1fr 1fr; }
+  .store__grid { grid-template-columns: 1fr; }
+  .footer__top { flex-direction: column; gap: 32px; }
+  .hero__sns, .hero__copy { display: none; }
+}
+@media (max-width: 480px) {
+  .commitment__grid { grid-template-columns: 1fr; }
+  .lineup__grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- Sample badge -->
+<div class="badge-sample">
+  これは <a href="/">小麦とHP</a> の制作サンプルです
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="header__inner">
+    <h1 class="header__logo">
+      パン工房 こむぎ日和
+      <small>KOMUGI BIYORI BAKERY</small>
+    </h1>
+    <nav class="header__nav">
+      <a href="#about">こむぎ日和について</a>
+      <a href="#lineup">パンの種類</a>
+      <a href="#store">ストア案内</a>
+      <a href="#info">お知らせ</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <h2 class="hero__catch">
+      <em>毎朝、焼きたての</em>
+      <em>しあわせをお届けします</em>
+    </h2>
+    <p class="hero__sub">From Sakai City, Osaka — Komugi Biyori Bakery</p>
+  </div>
+  <div class="hero__sns">
+    <a href="#">Instagram</a>
+    <a href="#">LINE</a>
+  </div>
+  <p class="hero__copy">2024 Komugi Biyori all rights reserved.</p>
+</section>
+
+<!-- Information -->
+<section class="sec info" id="info">
+  <div class="sec__inner">
+    <p class="sec__en">Information</p>
+    <h2 class="sec__title">お知らせ</h2>
+    <div class="info__list">
+      <a href="#" class="info__item">
+        <span class="info__date">2024.12.20</span>
+        <span class="info__text">年末年始の営業時間のお知らせ</span>
+      </a>
+      <a href="#" class="info__item">
+        <span class="info__date">2024.11.15</span>
+        <span class="info__text">冬限定「こむぎのシュトーレン」販売開始しました</span>
+      </a>
+      <a href="#" class="info__item">
+        <span class="info__date">2024.10.08</span>
+        <span class="info__text">堺パンフェスタ2024に出店いたします</span>
+      </a>
+    </div>
+    <p><a href="#" class="more-link">お知らせをもっと見る →</a></p>
+  </div>
+</section>
+
+<!-- About -->
+<section class="sec about" id="about">
+  <div class="sec__inner">
+    <p class="sec__en">About</p>
+    <h2 class="sec__title">新鮮でおいしいパンを<br>毎日食べてほしい</h2>
+    <div class="about__grid">
+      <div class="about__img">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=800&q=80" alt="パン職人">
+      </div>
+      <div class="about__body">
+        <p>
+          パン工房 こむぎ日和は、大阪・堺市の手づくりパン屋さんです。<br><br>
+          早朝からその日のパンをその日に焼き上げるので、味や香りがとても良いパンができあがります。
+          素材にもこだわり、国産小麦と天然酵母を使った体にやさしいパンをお届けしています。<br><br>
+          名物のこむぎ食パンや、季節のフルーツを使ったデニッシュ、
+          お子さまにも人気のくまパンなど、毎日でも食べたくなるラインナップをご用意しています。
+        </p>
+        <p><a href="#" class="more-link">こむぎ日和について詳しく →</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Commitment -->
+<section class="sec commitment">
+  <div class="sec__inner">
+    <p class="sec__en">Commitment</p>
+    <h2 class="sec__title">地元で永く愛される理由がある</h2>
+    <div class="commitment__grid">
+      <figure class="commitment__card">
+        <img src="https://images.unsplash.com/photo-1549931319-a545753d62ce?w=600&q=80" alt="こだわりの想い">
+        <figcaption># こむぎ日和の想い</figcaption>
+      </figure>
+      <figure class="commitment__card">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="手仕事のこだわり">
+        <figcaption># 手仕事のこだわり</figcaption>
+      </figure>
+      <figure class="commitment__card">
+        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=600&q=80" alt="素材のこだわり">
+        <figcaption># 素材へのこだわり</figcaption>
+      </figure>
+      <figure class="commitment__card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="コーヒーのこだわり">
+        <figcaption># コーヒーについて</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec gallery">
+  <div class="sec__inner">
+    <div class="gallery__scroll">
+      <div class="gallery__item"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=640&q=80" alt="焼きたてパン"></div>
+      <div class="gallery__item"><img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=640&q=80" alt="ショーケース"></div>
+      <div class="gallery__item"><img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=640&q=80" alt="バゲット"></div>
+      <div class="gallery__item"><img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=640&q=80" alt="丸パン"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Lineup -->
+<section class="sec lineup" id="lineup">
+  <div class="sec__inner">
+    <p class="sec__en">Line up</p>
+    <h2 class="sec__title">パンの種類</h2>
+    <div class="lineup__grid">
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1549931319-a545753d62ce?w=600&q=80" alt="こむぎ食パン">
+        <figcaption>こむぎ食パン</figcaption>
+      </figure>
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038024a?w=600&q=80" alt="天然酵母フランスパン">
+        <figcaption>天然酵母フランスパン</figcaption>
+      </figure>
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1586444248902-2f64eddc13df?w=600&q=80" alt="くまパン">
+        <figcaption>くまパン</figcaption>
+      </figure>
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1568254183919-78a4f43a2877?w=600&q=80" alt="季節のデニッシュ">
+        <figcaption>季節のデニッシュ</figcaption>
+      </figure>
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1608198093002-ad4e005484ec?w=600&q=80" alt="クロワッサン">
+        <figcaption>クロワッサン</figcaption>
+      </figure>
+      <figure class="lineup__card">
+        <img src="https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=600&q=80" alt="サンドイッチ">
+        <figcaption>サンドイッチ</figcaption>
+      </figure>
+    </div>
+    <p style="text-align:center; margin-top:40px;"><a href="#" class="more-link">パンの種類をもっと見る →</a></p>
+  </div>
+</section>
+
+<!-- Store -->
+<section class="sec store" id="store">
+  <div class="sec__inner">
+    <p class="sec__en">Store</p>
+    <h2 class="sec__title">ストア案内</h2>
+    <div class="store__grid">
+      <div class="store__card">
+        <img src="https://images.unsplash.com/photo-1517433670267-08bbd4be890f?w=400&q=80" alt="本店">
+        <h3 class="store__name">こむぎ日和 本店</h3>
+        <p class="store__addr">大阪府堺市北区〇〇町1-2-3<br>TEL: 072-XXX-XXXX<br>営業時間: 7:00〜18:00（火曜定休）</p>
+        <a href="#" class="store__btn">詳しく見る</a>
+      </div>
+      <div class="store__card">
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&q=80" alt="2号店">
+        <h3 class="store__name">こむぎ日和 2号店</h3>
+        <p class="store__addr">大阪府堺市中区〇〇町4-5-6<br>TEL: 072-XXX-XXXX<br>営業時間: 8:00〜19:00（水曜定休）</p>
+        <a href="#" class="store__btn">詳しく見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div class="footer__logo-area">
+        <p class="footer__logo">パン工房 こむぎ日和<small>KOMUGI BIYORI BAKERY</small></p>
+        <div class="footer__sns">
+          <span>公式SNSアカウント</span>
+          <a href="#">Instagram</a>
+          <a href="#">LINE</a>
+        </div>
+      </div>
+      <div class="footer__nav">
+        <ul>
+          <li><a href="#about">こむぎ日和について</a></li>
+          <li><a href="#">こむぎ日和の想い</a></li>
+          <li><a href="#">手仕事のこだわり</a></li>
+          <li><a href="#">素材のこだわり</a></li>
+        </ul>
+        <ul>
+          <li><a href="#store">ストア案内</a></li>
+          <li><a href="#lineup">パンの種類</a></li>
+          <li><a href="#">焼き上がり時間</a></li>
+          <li><a href="#info">お知らせ</a></li>
+        </ul>
+        <ul>
+          <li><a href="#">求人情報</a></li>
+          <li><a href="#">会社概要</a></li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer__bottom">&copy; Komugi Biyori Bakery. Website by <a href="/" style="color:rgba(255,255,255,0.5); border-bottom:1px solid rgba(255,255,255,0.3);">小麦とHP</a></p>
+  </div>
+</footer>
+
+</body>
+</html>
