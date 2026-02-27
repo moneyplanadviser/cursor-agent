@@ -69,14 +69,11 @@ ul, ol { list-style: none; }
   display: flex; align-items: center; gap: 12px;
   font-weight: 700; font-size: 1.4rem; color: var(--color-primary);
 }
-.header__logo .logo-icon {
-  width: 44px; height: 44px; background: var(--color-primary);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-  color: #fff; font-family: var(--font-en); font-size: 1.1rem; font-weight: 700;
+.header__logo .logo-img {
+  height: 56px; width: auto;
 }
-.header__logo .logo-sub {
-  font-size: 0.65rem; font-weight: 400; color: var(--color-text-light);
-  display: block; margin-top: 2px; letter-spacing: 0.05em;
+.footer-logo-img {
+  height: 80px; width: auto; filter: brightness(0) invert(1); opacity: 0.8;
 }
 .header__nav { display: flex; align-items: center; gap: 32px; }
 .header__nav a {
@@ -643,11 +640,7 @@ ul, ol { list-style: none; }
   <div class="header__inr">
     <h1 class="header__logo">
       <a href="#">
-        <span class="logo-icon">小</span>
-        <span>
-          小麦とHP
-          <span class="logo-sub">パン屋さん専門HP制作</span>
-        </span>
+        <img src="logo.svg" alt="小麦とHP" class="logo-img">
       </a>
     </h1>
     <nav class="header__nav">
@@ -993,8 +986,7 @@ ul, ol { list-style: none; }
     <div class="footer__top">
       <div>
         <p class="footer__logo">
-          小麦とHP
-          <span class="footer__logo-sub">パン屋さん専門HP制作</span>
+          <img src="logo.svg" alt="小麦とHP" class="footer-logo-img">
         </p>
         <p style="font-size:0.82rem; margin-top:8px;">〒542-0081 大阪府大阪市中央区南船場3丁目2番22号 おおきに南船場ビル205</p>
       </div>
