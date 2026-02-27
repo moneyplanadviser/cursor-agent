@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 420" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Wheat stalk - stem -->
+  <path d="M120 380 C100 300, 160 200, 180 100" stroke="#B8956A" stroke-width="3" fill="none"/>
+  <!-- Wheat stalk - lower curve -->
+  <path d="M120 380 C110 370, 100 360, 115 345" stroke="#B8956A" stroke-width="3" fill="none"/>
+  <ellipse cx="108" cy="362" rx="12" ry="20" transform="rotate(-30 108 362)" stroke="#B8956A" stroke-width="2.5" fill="none"/>
+
+  <!-- Wheat grains - left side -->
+  <ellipse cx="162" cy="175" rx="8" ry="18" transform="rotate(-25 162 175)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="155" cy="200" rx="8" ry="18" transform="rotate(-20 155 200)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="148" cy="225" rx="8" ry="18" transform="rotate(-15 148 225)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="142" cy="250" rx="8" ry="16" transform="rotate(-10 142 250)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="137" cy="273" rx="7" ry="15" transform="rotate(-5 137 273)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="133" cy="295" rx="7" ry="14" transform="rotate(0 133 295)" stroke="#B8956A" stroke-width="2" fill="none"/>
+
+  <!-- Wheat grains - right side -->
+  <ellipse cx="192" cy="165" rx="8" ry="18" transform="rotate(25 192 165)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="195" cy="190" rx="8" ry="18" transform="rotate(20 195 190)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="196" cy="215" rx="8" ry="18" transform="rotate(15 196 215)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="195" cy="240" rx="8" ry="16" transform="rotate(10 195 240)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="192" cy="263" rx="7" ry="15" transform="rotate(5 192 263)" stroke="#B8956A" stroke-width="2" fill="none"/>
+
+  <!-- Wheat top -->
+  <path d="M180 100 L178 80" stroke="#B8956A" stroke-width="2.5" fill="none"/>
+  <ellipse cx="178" cy="90" rx="5" ry="12" transform="rotate(-15 178 90)" stroke="#B8956A" stroke-width="2" fill="none"/>
+  <ellipse cx="185" cy="85" rx="5" ry="12" transform="rotate(15 185 85)" stroke="#B8956A" stroke-width="2" fill="none"/>
+
+  <!-- Wheat awn (top whiskers) -->
+  <path d="M178 78 L168 55" stroke="#B8956A" stroke-width="1.5" fill="none"/>
+  <path d="M180 75 L175 50" stroke="#B8956A" stroke-width="1.5" fill="none"/>
+  <path d="M183 73 L185 48" stroke="#B8956A" stroke-width="1.5" fill="none"/>
+  <path d="M186 75 L195 52" stroke="#B8956A" stroke-width="1.5" fill="none"/>
+
+  <!-- Bread - curved swoosh line -->
+  <path d="M140 320 C200 280, 310 270, 340 300" stroke="#C4A35A" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Bread body -->
+  <path d="M175 330 C175 295, 220 270, 290 270 C360 270, 360 300, 355 330 C350 340, 180 340, 175 330 Z" stroke="#A07844" stroke-width="2.5" fill="none"/>
+
+  <!-- Bread score lines -->
+  <path d="M230 285 C250 275, 270 278, 285 290" stroke="#A07844" stroke-width="2" fill="none"/>
+  <path d="M250 295 C265 287, 285 288, 300 298" stroke="#A07844" stroke-width="2" fill="none"/>
+  <path d="M270 305 C280 300, 298 300, 315 308" stroke="#A07844" stroke-width="2" fill="none"/>
+
+  <!-- Bread bottom line -->
+  <path d="M185 335 L350 335" stroke="#A07844" stroke-width="1.5" fill="none"/>
+
+  <!-- Text: ¦ h HP -->
+  <text x="155" y="400" font-family="'Noto Sans JP', 'Hiragino Sans', sans-serif" font-size="36" fill="#A07844" letter-spacing="12" font-weight="400">¦ h HP</text>
+</svg>
