@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パン工房シェトモ | 天然酵母と南部小麦のパン【A案：イメージ一新】</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Noto+Serif+JP:wght@400;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --dark:#1a1410;--brown:#3d2e1f;--warm:#8B6914;--gold:#C4A35A;
+  --cream:#FAF6EF;--cream2:#F0EAE0;--white:#fff;
+  --text:#2a2218;--text-light:#6b5e4f;
+  --font:'Noto Sans JP',sans-serif;--serif:'Noto Serif JP',serif;--en:'Montserrat',sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:var(--font);color:var(--text);background:var(--dark);line-height:1.8;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit;transition:.3s}
+a:hover{opacity:.75}
+ul{list-style:none}
+
+/* Proposal Badge */
+.proposal-badge{position:fixed;top:0;left:0;right:0;z-index:999;background:var(--warm);color:#fff;text-align:center;padding:8px;font-size:.75rem;font-weight:600;letter-spacing:.1em}
+
+/* Header */
+.header{position:fixed;top:32px;left:0;width:100%;z-index:100;transition:background .4s}
+.header.scrolled{background:rgba(26,20,16,.95);backdrop-filter:blur(12px);top:32px}
+.header__inner{max-width:1200px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:80px}
+.header__logo{font-family:var(--serif);font-size:1.5rem;color:#fff;font-weight:700;letter-spacing:.15em}
+.header__logo small{display:block;font-family:var(--en);font-size:.6rem;font-weight:300;letter-spacing:.3em;opacity:.5}
+.header__nav{display:flex;gap:32px}
+.header__nav a{font-size:.8rem;color:rgba(255,255,255,.7);font-weight:400;letter-spacing:.05em;position:relative}
+.header__nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s}
+.header__nav a:hover{opacity:1;color:#fff}
+.header__nav a:hover::after{width:100%}
+
+/* Hero - full screen cinematic */
+.hero{height:100vh;position:relative;overflow:hidden}
+.hero__bg{position:absolute;inset:0}
+.hero__bg img{width:100%;height:100%;object-fit:cover;animation:slowZoom 20s ease-in-out infinite alternate}
+@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.08)}}
+.hero__overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,20,16,.3) 0%,rgba(26,20,16,.1) 40%,rgba(26,20,16,.7) 100%)}
+.hero__content{position:absolute;bottom:120px;left:0;right:0;z-index:2;text-align:center;color:#fff}
+.hero__catch{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.8rem);font-weight:700;line-height:1.8;letter-spacing:.15em}
+.hero__sub{font-family:var(--en);font-size:.75rem;letter-spacing:.4em;opacity:.5;margin-top:24px;text-transform:uppercase}
+.hero__scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);z-index:2;color:rgba(255,255,255,.4);font-family:var(--en);font-size:.65rem;letter-spacing:.2em;text-align:center}
+.hero__scroll::after{content:'';display:block;width:1px;height:40px;background:rgba(255,255,255,.3);margin:8px auto 0;animation:scrollLine 2s infinite}
+@keyframes scrollLine{0%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(0);transform-origin:top}}
+
+/* Sections */
+.sec{padding:120px 0;background:var(--cream)}
+.sec--dark{background:var(--dark);color:#fff}
+.sec--alt{background:var(--cream2)}
+.inner{max-width:1100px;margin:0 auto;padding:0 40px}
+.sec__en{font-family:var(--en);font-size:.7rem;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+.sec--dark .sec__en{color:var(--gold)}
+.sec__title{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:700;margin-top:12px;line-height:1.6}
+.sec__line{width:40px;height:1px;background:var(--gold);margin-top:20px}
+
+/* About */
+.about__grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:60px;align-items:center}
+.about__img{border-radius:4px;overflow:hidden}
+.about__img img{width:100%;height:420px;object-fit:cover}
+.about__text{font-size:.92rem;color:var(--text-light);line-height:2.4}
+.about__text p+p{margin-top:20px}
+
+/* Philosophy */
+.philosophy{text-align:center}
+.philosophy__lead{font-family:var(--serif);font-size:clamp(1.2rem,2vw,1.7rem);font-weight:700;line-height:2.2;margin-top:48px;color:#fff}
+.philosophy__text{font-size:.9rem;color:rgba(255,255,255,.6);line-height:2.2;max-width:700px;margin:24px auto 0}
+
+/* Gallery */
+.gallery__grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-top:48px}
+.gallery__item{overflow:hidden;aspect-ratio:1}
+.gallery__item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.gallery__item:hover img{transform:scale(1.08)}
+
+/* Info */
+.info__grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:48px;align-items:start}
+.info__table{width:100%}
+.info__table tr{border-bottom:1px solid var(--cream2)}
+.info__table td{padding:16px 0;font-size:.9rem;vertical-align:top}
+.info__table td:first-child{width:140px;font-weight:600;color:var(--warm)}
+.info__map{border-radius:4px;overflow:hidden;height:350px}
+.info__map iframe{width:100%;height:100%;border:0}
+
+/* Footer */
+.footer{background:var(--brown);color:rgba(255,255,255,.6);padding:60px 0 24px}
+.footer__inner{max-width:1100px;margin:0 auto;padding:0 40px}
+.footer__top{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1)}
+.footer__logo{font-family:var(--serif);color:#fff;font-size:1.1rem;font-weight:700}
+.footer__logo small{display:block;font-family:var(--en);font-size:.6rem;font-weight:300;opacity:.5;margin-top:4px}
+.footer__nav{display:flex;gap:24px}
+.footer__nav a{font-size:.78rem}
+.footer__bottom{text-align:center;padding-top:24px;font-size:.65rem;font-family:var(--en)}
+.footer__credit{margin-top:8px;font-size:.7rem}
+.footer__credit a{color:var(--gold);border-bottom:1px solid rgba(196,163,90,.3)}
+
+/* Responsive */
+@media(max-width:768px){
+  .header__nav{display:none}
+  .about__grid,.info__grid{grid-template-columns:1fr}
+  .gallery__grid{grid-template-columns:repeat(2,1fr)}
+  .footer__top{flex-direction:column;gap:24px}
+  .hero__content{bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<div class="proposal-badge">【A案】イメージ一新デザイン ― 小麦とHP 制作提案</div>
+
+<header class="header" id="header">
+  <div class="header__inner">
+    <div class="header__logo">パン工房シェトモ<small>SHETOMO BAKERY</small></div>
+    <nav class="header__nav">
+      <a href="#about">シェトモについて</a>
+      <a href="#philosophy">こだわり</a>
+      <a href="#gallery">ギャラリー</a>
+      <a href="#info">店舗情報</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero__bg">
+    <img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/slide_01-2.jpg" alt="シェトモのパン">
+  </div>
+  <div class="hero__overlay"></div>
+  <div class="hero__content">
+    <h1 class="hero__catch">
+      南部小麦とホシノ丹沢酵母から<br>
+      作り出されるもっちり食感
+    </h1>
+    <p class="hero__sub">Natural Yeast Bakery Since Sakai City</p>
+  </div>
+  <div class="hero__scroll">SCROLL</div>
+</section>
+
+<!-- About -->
+<section class="sec" id="about">
+  <div class="inner">
+    <p class="sec__en">About</p>
+    <h2 class="sec__title">安心安全の天然酵母パンが<br>自慢のパン工房シェトモ</h2>
+    <div class="sec__line"></div>
+    <div class="about__grid">
+      <div class="about__img">
+        <img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3944.jpg" alt="パン工房シェトモ外観">
+      </div>
+      <div class="about__text">
+        <p>堺市北区百舌鳥梅町にお店を構えるパン工房シェトモです。</p>
+        <p>当店は沢山のお客様においしいパンをお楽しみいただきたいという思いから無添加・無農薬の素材にこだわった安心・安全なパンを幅広い種類でご用意しております。</p>
+        <p>「市販のパンの添加物や成分、原材料が気になる」といった方や家族の健康に気を遣う主婦の方々に多く利用されております。国産小麦・南部小麦を使用したパンは、アレルギーの方や大病を経験した方、小さいお子様でも安心してお召し上がりいただけます。</p>
+        <p>毎週水曜日と日曜日に<br>おいしいパンたちが皆様をお待ちしております。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<section class="sec sec--dark philosophy" id="philosophy">
+  <div class="inner">
+    <p class="sec__en">Philosophy</p>
+    <h2 class="philosophy__lead">
+      手間暇かけて作る、無添加の<br>天然酵母パンづくり
+    </h2>
+    <p class="philosophy__text">
+      パン工房シェトモの天然酵母100％（ホシノ丹沢酵母使用）にこだわり、無添加で保存料を一切使わないパンをつくっています。
+      命の源となり、安心して食べていただける本物の安全でおいしいパン。そんな心に届くおいしいパンを皆様に食べていただきたい。
+      私達はそんな思いで、心を込めてパンづくりに励んでいます。
+    </p>
+    <p class="philosophy__text">
+      また、パンに使う酵母はもちろんのこと、無添加にこだわるよつ葉乳業のバターやトッピングやフィリングにもオーガニックのものを選び、徹底して安全性にこだわり、厳選しています。
+    </p>
+  </div>
+</section>
+
+<!-- Gallery -->
+<section class="sec sec--alt" id="gallery">
+  <div class="inner">
+    <p class="sec__en">Gallery</p>
+    <h2 class="sec__title">ギャラリー</h2>
+    <div class="sec__line"></div>
+    <div class="gallery__grid">
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3993.jpg" alt="パン1"></div>
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3961.jpg" alt="パン2"></div>
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3927.jpg" alt="パン3"></div>
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3926.jpg" alt="パン4"></div>
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3904.jpg" alt="パン5"></div>
+      <div class="gallery__item"><img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/IMG_3944.jpg" alt="外観"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Info -->
+<section class="sec" id="info">
+  <div class="inner">
+    <p class="sec__en">Information</p>
+    <h2 class="sec__title">店舗情報</h2>
+    <div class="sec__line"></div>
+    <div class="info__grid">
+      <table class="info__table">
+        <tr><td>社名</td><td>パン工房シェトモ</td></tr>
+        <tr><td>代表者</td><td>池田三子</td></tr>
+        <tr><td>所在地</td><td>〒591-8032<br>大阪府堺市北区百舌鳥梅町3丁50-4</td></tr>
+        <tr><td>TEL</td><td>072-252-9418</td></tr>
+        <tr><td>店舗営業時間</td><td>日曜 7:00〜19:00</td></tr>
+        <tr><td>パン教室</td><td>第1第3 木曜日 10:00〜14:00</td></tr>
+      </table>
+      <div class="info__map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6572.3145353538885!2d135.49468323300863!3d34.54957328047355!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000dbb07f190c11%3A0x99393ba09e281bfe!2z44OR44Oz5bel5oi_IOOCt-OCp-ODiOODog!5e0!3m2!1sja!2sjp!4v1578548692716!5m2!1sja!2sjp" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <div>
+        <p class="footer__logo">パン工房シェトモ<small>SHETOMO BAKERY</small></p>
+        <p style="font-size:.78rem;margin-top:12px">〒591-8032 大阪府堺市北区百舌鳥梅町3丁50-4<br>TEL: 072-252-9418</p>
+      </div>
+      <nav class="footer__nav">
+        <a href="#about">シェトモについて</a>
+        <a href="#philosophy">こだわり</a>
+        <a href="#gallery">ギャラリー</a>
+        <a href="#info">店舗情報</a>
+      </nav>
+    </div>
+    <p class="footer__bottom">&copy; パン工房シェトモ All Rights Reserved.</p>
+    <p class="footer__credit">Website by <a href="../../../">小麦とHP</a></p>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{document.getElementById('header').classList.toggle('scrolled',window.scrollY>100)});
+</script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>パン工房シェトモ さま ― HP制作提案 | 小麦とHP</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans JP',sans-serif;background:#FAF6EF;color:#3a3226;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px}
+.container{max-width:800px;width:100%;text-align:center}
+.logo{height:60px;margin-bottom:32px}
+h1{font-family:'Noto Serif JP',serif;font-size:1.6rem;font-weight:700;margin-bottom:8px}
+.sub{font-size:.9rem;color:#6b5e4f;margin-bottom:48px}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.06);transition:transform .4s,box-shadow .4s;text-decoration:none;color:inherit}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 40px rgba(0,0,0,.12);opacity:1}
+.card__img{height:200px;overflow:hidden}
+.card__img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .card__img img{transform:scale(1.05)}
+.card__body{padding:28px}
+.card__tag{display:inline-block;font-size:.7rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:12px}
+.card--a .card__tag{background:#1a1410;color:#C4A35A}
+.card--b .card__tag{background:#5a7a3a;color:#fff}
+.card__title{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.card__text{font-size:.82rem;color:#6b5e4f;line-height:1.8}
+.card__btn{display:inline-block;margin-top:16px;padding:10px 28px;border-radius:50px;font-size:.82rem;font-weight:600;transition:background .3s,color .3s}
+.card--a .card__btn{background:#1a1410;color:#C4A35A}
+.card--a .card__btn:hover{background:#C4A35A;color:#1a1410}
+.card--b .card__btn{background:#5a7a3a;color:#fff}
+.card--b .card__btn:hover{background:#3d5a24}
+.footer-text{margin-top:48px;font-size:.75rem;color:#6b5e4f}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="container">
+  <img src="../../小麦とHP.png" alt="小麦とHP" class="logo">
+  <h1>パン工房シェトモ さま</h1>
+  <p class="sub">ホームページ制作のご提案 ― 2つのプランをご用意しました</p>
+  <div class="cards">
+    <a href="plan-a/" class="card card--a">
+      <div class="card__img">
+        <img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/slide_01-2.jpg" alt="A案">
+      </div>
+      <div class="card__body">
+        <span class="card__tag">PLAN A</span>
+        <h2 class="card__title">イメージ一新デザイン</h2>
+        <p class="card__text">シックでモダンなダークトーンを基調に、パンの魅力を引き立てる洗練されたデザイン。新しいお客様層にもアピールします。</p>
+        <span class="card__btn">A案を見る →</span>
+      </div>
+    </a>
+    <a href="plan-b/" class="card card--b">
+      <div class="card__img">
+        <img src="https://www.shetomo.com/60012453/wp-content/uploads/2020/01/slide_03-2.jpg" alt="B案">
+      </div>
+      <div class="card__body">
+        <span class="card__tag">PLAN B</span>
+        <h2 class="card__title">雰囲気継承リメイク</h2>
+        <p class="card__text">現在のサイトの温かみとナチュラルな雰囲気を活かしながら、見やすさと使いやすさを大幅に改善したデザイン。</p>
+        <span class="card__btn">B案を見る →</span>
+      </div>
+    </a>
+  </div>
+  <p class="footer-text">&copy; 小麦とHP ― パン屋さん専門HP制作</p>
+</div>
+</body>
+</html>
