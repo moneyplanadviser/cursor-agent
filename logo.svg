@@ -1,8 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 120" fill="none">
-  <style>
-    .en { font-family: 'Georgia', 'Times New Roman', serif; font-size: 38px; fill: #4a3f35; letter-spacing: 2px; }
-    .ja { font-family: 'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif; font-size: 16px; fill: #7a6e60; letter-spacing: 3px; }
-  </style>
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400&amp;family=Noto+Serif:wght@400&amp;display=swap');
+      .en { font-family: 'Noto Serif', 'Georgia', serif; font-size: 38px; fill: #4a3f35; letter-spacing: 2px; }
+      .ja { font-family: 'Noto Sans JP', sans-serif; font-size: 16px; fill: #7a6e60; letter-spacing: 3px; }
+    </style>
+  </defs>
 
   <!-- Wheat + Bread line art icon -->
   <g transform="translate(10, 8)" stroke="#4a3f35" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round">
