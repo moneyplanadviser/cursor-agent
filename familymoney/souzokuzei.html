@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>相続税シミュレーター | FamilyMoney</title>
-  <meta name="description" content="FP3級の相続税計算を3ステップでわかりやすくシミュレーション。課税価格・相続税総額・各人の税額を自動計算します。">
+  <meta name="description" content="相続税を3ステップでシミュレーション。課税価格・相続税総額・各人の税額を自動計算。クライアント向け無料サービス。">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
@@ -262,10 +262,58 @@
     }
     .footer a { color: var(--primary); }
 
+    /* Reference table */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+      margin: 20px 0;
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .ref-table th,
+    .ref-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .ref-table th {
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      width: 120px;
+    }
+    .ref-table tr:last-child td { border-bottom: none; }
+    .ref-section {
+      margin-top: 24px;
+      padding: 20px;
+      background: #f0f7f4;
+      border-radius: 12px;
+      border-left: 4px solid var(--primary);
+    }
+    .ref-section h4 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+    }
+    .ref-section p { font-size: 0.85rem; line-height: 1.7; color: var(--text); }
+    .step-what {
+      background: #fff9ed;
+      border: 1px solid var(--accent-light);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+      font-size: 0.9rem;
+    }
+    .step-what strong { color: var(--primary); }
+
     /* Responsive */
     @media (max-width: 600px) {
       .step-card { padding: 20px; }
       .heir-item { grid-template-columns: 1fr; }
+      .ref-table { font-size: 0.8rem; }
+      .ref-table th, .ref-table td { padding: 10px; }
     }
   </style>
 </head>
@@ -273,7 +321,7 @@
 
   <header class="header">
     <h1>相続税シミュレーター</h1>
-    <p>FP3級の相続税計算を3ステップでわかりやすく</p>
+    <p>相続税を3ステップでシミュレーション｜クライアント向け無料サービス</p>
   </header>
 
   <main class="container">
@@ -341,9 +389,46 @@
     <!-- Step 3: 各人の算出税額 -->
     <section class="step-card">
       <h2><span class="step-num">3</span>各人の算出税額の計算</h2>
+      <div class="step-what">
+        <strong>③とは？</strong><br>
+        Step2で求めた「相続税の総額」を、各相続人が<strong>実際に取得した財産の割合</strong>で按分し、一人ひとりの納付税額を算出するステップです。法定相続分ではなく、遺産分割協議で決まった実際の取得金額を使います。
+      </div>
       <p class="step-desc">
         相続税の総額を、各相続人の実際の取得割合（取得金額÷正味の遺産額）で按分します。※2割加算・配偶者控除等は簡略化しています。
       </p>
+
+      <div class="ref-section">
+        <h4>計算例と根拠</h4>
+        <table class="ref-table">
+          <tr>
+            <th>計算式</th>
+            <td>各人の算出税額 ＝ 相続税の総額 × 各人の取得割合<br>
+            <small>取得割合 ＝ 各人の取得金額 ÷ 正味の遺産額</small></td>
+          </tr>
+          <tr>
+            <th>計算例</th>
+            <td>
+              相続税の総額 5,720万円、正味の遺産額 3億円の場合：<br>
+              ・配偶者 1億5,000万円取得 → 5,720万 × (15,000万÷30,000万) ＝ <strong>2,860万円</strong><br>
+              ・子A 1億円取得 → 5,720万 × (10,000万÷30,000万) ＝ <strong>1,907万円</strong><br>
+              ・子B 5,000万円取得 → 5,720万 × (5,000万÷30,000万) ＝ <strong>953万円</strong>
+            </td>
+          </tr>
+          <tr>
+            <th>根拠</th>
+            <td>
+              相続税法第19条（各相続人等の相続税額の計算）に基づく。相続税の総額を、各相続人の課税価格の割合で按分する。遺産分割の結果（実際の取得割合）を用いる。
+            </td>
+          </tr>
+          <tr>
+            <th>補足</th>
+            <td>
+              本シミュレーターでは、2割加算（1親等以外への加算）・配偶者の税額軽減・贈与税額控除等は簡略化しています。実際の申告では税理士にご相談ください。
+            </td>
+          </tr>
+        </table>
+      </div>
+
       <div id="heirInputs" class="heir-list">
         <!-- Dynamic heir inputs -->
       </div>
@@ -363,7 +448,7 @@
   </main>
 
   <footer class="footer">
-    <p><a href="index.html">FamilyMoney</a> 相続税シミュレーター｜FP3級試験対策・学習用</p>
+    <p><a href="index.html">FamilyMoney</a> 相続税シミュレーター｜クライアント向け無料サービス</p>
   </footer>
 
   <script>
