@@ -284,6 +284,8 @@
       font-weight: 600;
       width: 120px;
     }
+    #taxBasisTable th { width: auto; }
+    #taxBasisTable th:first-child { min-width: 200px; }
     .ref-table tr:last-child td { border-bottom: none; }
     .ref-section {
       margin-top: 24px;
@@ -325,6 +327,24 @@
   </header>
 
   <main class="container">
+    <!-- 試算の計算根拠：相続税速算表 -->
+    <section class="step-card" id="taxBasisSection">
+      <h2 style="border-bottom: 2px solid var(--accent-light); padding-bottom: 12px;">試算の計算根拠</h2>
+      <p class="step-desc">相続税の試算には、以下の速算表（<span id="taxTableEffective">2015年1月以降</span>）を使用しています。税率改正時はこの表を更新してください。</p>
+      <table class="ref-table" id="taxBasisTable">
+        <thead>
+          <tr>
+            <th>各相続人の取得金額</th>
+            <th>税率</th>
+            <th>控除額</th>
+          </tr>
+        </thead>
+        <tbody id="taxBasisBody">
+          <!-- JSでTAX_TABLEから生成 -->
+        </tbody>
+      </table>
+    </section>
+
     <!-- Step 1: 課税価格の計算 -->
     <section class="step-card">
       <h2><span class="step-num">1</span>課税価格の計算</h2>
@@ -398,35 +418,8 @@
       </p>
 
       <div class="ref-section">
-        <h4>計算例と根拠</h4>
-        <table class="ref-table">
-          <tr>
-            <th>計算式</th>
-            <td>各人の算出税額 ＝ 相続税の総額 × 各人の取得割合<br>
-            <small>取得割合 ＝ 各人の取得金額 ÷ 正味の遺産額</small></td>
-          </tr>
-          <tr>
-            <th>計算例</th>
-            <td>
-              相続税の総額 5,720万円、正味の遺産額 3億円の場合：<br>
-              ・配偶者 1億5,000万円取得 → 5,720万 × (15,000万÷30,000万) ＝ <strong>2,860万円</strong><br>
-              ・子A 1億円取得 → 5,720万 × (10,000万÷30,000万) ＝ <strong>1,907万円</strong><br>
-              ・子B 5,000万円取得 → 5,720万 × (5,000万÷30,000万) ＝ <strong>953万円</strong>
-            </td>
-          </tr>
-          <tr>
-            <th>根拠</th>
-            <td>
-              相続税法第19条（各相続人等の相続税額の計算）に基づく。相続税の総額を、各相続人の課税価格の割合で按分する。遺産分割の結果（実際の取得割合）を用いる。
-            </td>
-          </tr>
-          <tr>
-            <th>補足</th>
-            <td>
-              本シミュレーターでは、2割加算（1親等以外への加算）・配偶者の税額軽減・贈与税額控除等は簡略化しています。実際の申告では税理士にご相談ください。
-            </td>
-          </tr>
-        </table>
+        <h4>計算式（Step3）</h4>
+        <p>各人の算出税額 ＝ 相続税の総額 × 各人の取得割合（取得金額 ÷ 正味の遺産額）</p>
       </div>
 
       <div id="heirInputs" class="heir-list">
@@ -452,17 +445,39 @@
   </footer>
 
   <script>
-    // 相続税速算表（万円）
+    // 相続税速算表（万円）※この表を更新すれば計算式も自動で反映されます
+    const TAX_TABLE_EFFECTIVE = '2015年1月以降';
     const TAX_TABLE = [
-      { max: 1000, rate: 0.10, deduction: 0 },
-      { max: 3000, rate: 0.15, deduction: 50 },
-      { max: 5000, rate: 0.20, deduction: 200 },
-      { max: 10000, rate: 0.30, deduction: 700 },
-      { max: 20000, rate: 0.40, deduction: 1700 },
-      { max: 30000, rate: 0.45, deduction: 2700 },
-      { max: 60000, rate: 0.50, deduction: 4200 },
-      { max: Infinity, rate: 0.55, deduction: 7200 }
+      { min: 0, max: 1000, rate: 0.10, deduction: 0 },
+      { min: 1000, max: 3000, rate: 0.15, deduction: 50 },
+      { min: 3000, max: 5000, rate: 0.20, deduction: 200 },
+      { min: 5000, max: 10000, rate: 0.30, deduction: 700 },
+      { min: 10000, max: 20000, rate: 0.40, deduction: 1700 },
+      { min: 20000, max: 30000, rate: 0.45, deduction: 2700 },
+      { min: 30000, max: 60000, rate: 0.50, deduction: 4200 },
+      { min: 60000, max: Infinity, rate: 0.55, deduction: 7200 }
     ];
+
+    function formatRange(row) {
+      const fmt = (n) => n >= 10000 ? (n / 10000) + '億円' : n + '万円';
+      if (row.max === Infinity) return fmt(row.min) + '超';
+      if (row.min === 0) return fmt(row.max) + '以下';
+      return fmt(row.min) + '超～' + fmt(row.max) + '以下';
+    }
+
+    function renderTaxBasisTable() {
+      const tbody = document.getElementById('taxBasisBody');
+      if (!tbody) return;
+      tbody.innerHTML = TAX_TABLE.map(row => `
+        <tr>
+          <td>${formatRange(row)}</td>
+          <td>${(row.rate * 100).toFixed(0)}%</td>
+          <td>${row.deduction === 0 ? '—' : row.deduction + '万円'}</td>
+        </tr>
+      `).join('');
+      const el = document.getElementById('taxTableEffective');
+      if (el) el.textContent = TAX_TABLE_EFFECTIVE;
+    }
 
     function getTax(amount) {
       for (const row of TAX_TABLE) {
@@ -671,6 +686,7 @@
       }
     });
 
+    renderTaxBasisTable();
     updateOtherHeirHint();
     buildHeirInputs();
   </script>
